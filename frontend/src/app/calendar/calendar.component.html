@@ -1,0 +1,29 @@
+<div class="claendar">
+    <div class="calendar-header">
+        <button mat-icon-button (click)="previousDay()">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <h2>{{currentDate | date: 'MMMM d, y'}}</h2>
+        <button mat-icon-button (click)="nextDay()">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+    <div class="calendar-body">
+        <div class="hour" *ngFor="let hour of hours">
+            <div class="hour-lebal">
+                {{hour}}:00
+            </div>
+            <div class="appointments" cdkDropListGroup>
+                <div class="appointment" *ngFor="let appointment of getAppointmentsForHour(hour)" cdkDrag>
+                    <div class="appointment-box" cdkDrag (cdkDragMoved)="onDragMoved($event, appointment)"
+                        (cdkDragEnded)="onDragReleased($event, appointment)">
+                        {{appointment.title}}
+                        <button mat-icon-button color="warn"
+                            (click)="deleteAppointment(appointment.id)">&#10060;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button mat-raised-button color="primary" (click)="openAppointmentForm()">Add Appointment</button>

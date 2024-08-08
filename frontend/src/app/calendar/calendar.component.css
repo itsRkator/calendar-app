@@ -1,0 +1,68 @@
+.calendar{
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.calendar-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+
+.calendar-header h2 {
+    margin: 0 10px;
+}
+
+.calendar-body {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.hour{
+    display: flex;
+    align-items: flex-start;
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.hour-label{
+    width: 60px;
+    text-align: right;
+    margin-right: 10px;
+    padding-top: 5px;
+}
+
+.appointments{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.appointment-box {
+    background-color: #e0f7fa;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.appointment-box:hover{
+    background-color: #b2ebf2;
+}
+
+.appointment-box button{
+    visibility: hidden;
+}
+
+.appointment-box button{
+    visibility: visible;
+}

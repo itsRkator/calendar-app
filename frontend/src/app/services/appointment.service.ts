@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 
 export interface Appointment {
   id?: string;
+  _id?: string;
   title: string;
   date: Date;
 }

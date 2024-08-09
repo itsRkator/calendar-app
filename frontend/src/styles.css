@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&family=Roboto:wght@400&family=Arial:wght@400;700&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    color: #777b80 !important;
+}
+
+::ng-deep body {
+    font-family: "Google Sans", Roboto, Arial, sans-serif !important;
+
+}

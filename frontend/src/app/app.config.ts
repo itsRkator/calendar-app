@@ -6,10 +6,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {
+  MatNativeDateModule,
+} from '@angular/material/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { routes } from './app.routes';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { DatePipe } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,7 +27,10 @@ export const appConfig: ApplicationConfig = {
       MatButtonModule,
       MatDatepickerModule,
       MatNativeDateModule,
-      DragDropModule
+      DragDropModule,
+      BrowserAnimationsModule,
+      BrowserModule
     ),
+    DatePipe,
   ],
 };

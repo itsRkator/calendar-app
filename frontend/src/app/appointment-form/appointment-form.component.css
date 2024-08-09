@@ -1,0 +1,40 @@
+.dialog-box {
+    display: flex;
+    flex-direction: column;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog-header {
+    display: flex;
+    background-color: #f1f3f4;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.dialog-container {
+    height: calc(100vh - 600px);
+    margin: 5rem;
+    position: relative;
+    left: 0;
+    /* Aligns the div to the left of its containing element */
+    margin-left: 0;
+    /* Removes any left margin */
+}
+
+::ng-deep div .mdc-text-field--filled {
+    background-color: transparent !important;
+}
+
+::ng-deep .mdc-line-ripple {
+    border-bottom-style: none !important;
+}
+
+::ng-deep .mat-datepicker-content {
+    background-color: #ffffff !important;
+}

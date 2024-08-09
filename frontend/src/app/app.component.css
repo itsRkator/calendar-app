@@ -1,0 +1,11 @@
+::ng-deep .mat-grid-tile-content {
+    position: relative !important;
+    display: block !important;
+    height: calc(100vh - 675px) !important;
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    padding: 1rem 2rem 3rem 1rem;
+}

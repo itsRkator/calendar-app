@@ -1,68 +1,95 @@
-.calendar{
-    padding: 20px;
-    font-family: 'Roboto', sans-serif;
-}
-
-.calendar-header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-
-.calendar-header h2 {
-    margin: 0 10px;
-}
-
 .calendar-body {
     display: flex;
     flex-direction: column;
-    border: 1px solid #ccc;
+    position: relative;
+    background-color: white;
+    overflow-y: auto;
+    padding: 20px;
     border-radius: 8px;
-    overflow: hidden;
 }
 
-.hour{
+.hour {
     display: flex;
     align-items: flex-start;
-    border-top: 1px solid #ccc;
-    padding: 10px 0;
+    height: 60px;
+    /* Each hour block height */
 }
 
-.hour-label{
+.hour-label {
     width: 60px;
-    text-align: right;
-    margin-right: 10px;
-    padding-top: 5px;
+    text-align: left;
+    font-size: 12px;
+    color: #5f6368;
 }
 
-.appointments{
+.appointments {
+    border-top: 1px solid #dadce0;
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    position: relative;
 }
 
 .appointment-box {
-    background-color: #e0f7fa;
-    padding: 10px;
-    margin-bottom: 5px;
+    background-color: #1a73e8;
+    color: white;
+    padding: 5px 10px;
     border-radius: 4px;
-    cursor: move;
+    font-size: 14px;
+    position: absolute;
+    width: calc(100% - 20px);
+    left: 1px;
+    height: 3rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    transition: background-color 0.3s;
+    justify-content: space-between;
+    margin-top: 0.26rem;
 }
 
-.appointment-box:hover{
-    background-color: #b2ebf2;
+.appointment-box:hover {
+    background-color: #1766d6;
 }
 
-.appointment-box button{
+.appointment-box button {
     visibility: hidden;
 }
 
-.appointment-box button{
+.appointment-box:hover button {
     visibility: visible;
+}
+
+button.mat-raised-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1a73e8;
+    color: white;
+}
+
+button.mat-raised-button:hover {
+    background-color: #1766d6;
+}
+
+.vertical-separator {
+    height: 60px;
+    width: 0;
+    border-left: 1px solid #dadce0;
+}
+
+.schedule-appointment {
+    width: 99.5%;
+    height: 50px;
+    margin: 3px;
+    border: none;
+    background: transparent;
+}
+
+.schedule-appointment:hover {
+    cursor: pointer;
+    border: none;
+}
+
+.dialogBox {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    /* Add more styles as needed */
 }

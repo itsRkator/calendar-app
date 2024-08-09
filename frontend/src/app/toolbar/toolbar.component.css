@@ -1,0 +1,46 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+}
+
+.logo {
+    height: 25px;
+    margin-right: 0.5rem;
+}
+
+.today-btn {
+    margin-left: 3rem;
+    border-radius: 8px;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.menu-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-dropdown {
+    border-radius: 8px;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.toolbar-title {
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    color: rgb(60, 64, 67);
+    opacity: 1;
+    font-weight: lighter;
+    display: inline-block;
+    font-size: 22px;
+    line-height: 24px;
+    padding-left: 4px;
+    position: relative;
+    vertical-align: middle;
+}

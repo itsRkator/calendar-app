@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-appointment-form',
@@ -29,12 +30,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatIconModule,
   ],
   templateUrl: './appointment-form.component.html',
   styleUrls: ['./appointment-form.component.css'],
 })
 export class AppointmentFormComponent implements OnInit {
   appointmentForm!: FormGroup;
+  isFullScreen = false;
 
   constructor(
     public dialogRef: MatDialogRef<AppointmentFormComponent>,
@@ -57,5 +60,9 @@ export class AppointmentFormComponent implements OnInit {
     if (this.appointmentForm.valid) {
       this.dialogRef.close(this.appointmentForm.value);
     }
+  }
+
+  setDialogFullScreen() {
+    this.isFullScreen = !this.isFullScreen;
   }
 }

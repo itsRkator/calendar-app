@@ -6,7 +6,10 @@ import {
   CdkDragEnd,
   DragDropModule,
 } from '@angular/cdk/drag-drop';
-import { AppointmentService } from '../services/appointment.service';
+import {
+  Appointment,
+  AppointmentService,
+} from '../services/appointment.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,12 +18,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
 
-interface Appointment {
-  id?: string;
-  title: string;
-  date: Date;
+
+export interface Tile {
+  cols: number;
+  rows: number;
+  text: string;
 }
+
 
 @Component({
   selector: 'app-calendar',
@@ -37,6 +43,7 @@ interface Appointment {
     MatNativeDateModule,
     DragDropModule,
     MatIconModule,
+    MatGridListModule,
   ],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css'],
@@ -45,6 +52,16 @@ export class CalendarComponent implements OnInit {
   appointments: Appointment[] = [];
   hours: number[] = Array.from({ length: 24 }, (_, i) => i);
   currentDate: Date = new Date();
+  tiles: Tile[] = [
+    {text: '', cols: 1, rows: 1},
+    {text: 'Sunday', cols: 1, rows: 1},
+    {text: 'Monday', cols: 1, rows: 1},
+    {text: 'Tuesday', cols: 1, rows: 1},
+    {text: 'Wednesday', cols: 1, rows: 1},
+    {text: 'Thursday', cols: 1, rows: 1},
+    {text: 'Friday', cols: 1, rows: 1},
+    {text: 'Saturday', cols: 1, rows: 1}
+  ];
 
   constructor(
     private dialog: MatDialog,
@@ -63,8 +80,9 @@ export class CalendarComponent implements OnInit {
 
   openAppointmentForm(): void {
     const dialogRef = this.dialog.open(AppointmentFormComponent, {
-      width: '250px',
+      width: '99%',
       data: { title: '', date: new Date(this.currentDate) },
+      panelClass: 'dialogBox'
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -90,7 +108,7 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  onDragMoved(event: CdkDragMove<any>, appointment: Appointment): void {
+  onDragMoved(event: CdkDragMove<HTMLElement>, appointment: Appointment): void {
     const newPosition =
       event.pointerPosition.y -
       event.source.element.nativeElement.getBoundingClientRect().top;
@@ -98,7 +116,7 @@ export class CalendarComponent implements OnInit {
     appointment.date.setHours(newHour);
   }
 
-  onDragReleased(event: CdkDragEnd<any>, appointment: Appointment): void {
+  onDragReleased(event: CdkDragEnd<HTMLElement>, appointment: Appointment): void {
     const newPosition = event.distance.y;
     const newHour = Math.floor(newPosition / 50); // Assuming 50px per hour
     const newDate = new Date(appointment.date);
@@ -115,15 +133,5 @@ export class CalendarComponent implements OnInit {
     this.appointmentService.deleteAppointment(id).subscribe(() => {
       this.appointments = this.appointments.filter((app) => app.id !== id);
     });
-  }
-
-  previousDay(): void {
-    this.currentDate.setDate(this.currentDate.getDate() - 1);
-    this.loadAppointments();
-  }
-
-  nextDay(): void {
-    this.currentDate.setDate(this.currentDate.getDate() + 1);
-    this.loadAppointments();
   }
 }
